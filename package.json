@@ -10,7 +10,7 @@
   },
   "packageManager": "npm@10.5.2",
   "overrides": {
-    "react":"$react",
+    "react": "$react",
     "react-dom": "$react-dom"
   },
   "dependencies": {
