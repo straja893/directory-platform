@@ -2,6 +2,8 @@ import { auth, signOut, signIn } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Button } from "./ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 
 const Navbar = async () => {
   const session = await auth();
@@ -24,10 +26,20 @@ const Navbar = async () => {
                   await signOut({ redirectTo: "/" });
                 }}
               >
-                <button type="submit">Logout</button>
+                <Button type="submit">Logout</Button>
               </form>
               <Link href={`/user/${session?.user.id}`}>
-                <span>{session?.user?.name}</span>
+                <Avatar>
+                  <AvatarImage
+                    src={session?.user?.image}
+                    width={50}
+                    height={50}
+                    className="rounded-full"
+                  />
+                  <AvatarFallback className="bg-blue-500 text-white">
+                    CN
+                  </AvatarFallback>
+                </Avatar>
               </Link>
             </>
           ) : (
@@ -37,7 +49,7 @@ const Navbar = async () => {
                 await signIn("github");
               }}
             >
-              <button type="submit">Log In</button>
+              <Button type="submit">Log In</Button>
             </form>
           )}
         </div>
