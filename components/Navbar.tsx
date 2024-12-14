@@ -18,7 +18,9 @@ const Navbar = async () => {
           {session && session?.user ? (
             <>
               <Link href="/startup/create">
-                <span>Create</span>
+                <Button type="submit" className="text-white">
+                  Create
+                </Button>
               </Link>
               <form
                 action={async () => {
@@ -26,7 +28,9 @@ const Navbar = async () => {
                   await signOut({ redirectTo: "/" });
                 }}
               >
-                <Button type="submit">Logout</Button>
+                <Button type="submit" className="text-white">
+                  Logout
+                </Button>
               </form>
               <Link href={`/user/${session?.user.id}`}>
                 <Avatar>
@@ -36,9 +40,7 @@ const Navbar = async () => {
                     height={50}
                     className="rounded-full"
                   />
-                  <AvatarFallback className="bg-blue-500 text-white">
-                    CN
-                  </AvatarFallback>
+                  <AvatarFallback className="text-black">CN</AvatarFallback>
                 </Avatar>
               </Link>
             </>
@@ -49,7 +51,9 @@ const Navbar = async () => {
                 await signIn("github");
               }}
             >
-              <Button type="submit">Log In</Button>
+              <Button type="submit" className="text-white">
+                Log In
+              </Button>
             </form>
           )}
         </div>
